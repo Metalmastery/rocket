@@ -1,46 +1,53 @@
+'use strict';
 var Element = function(settings){
-	'use strict';
-	/** координаты */
+	this.id = Helper.uniq();
+	/** coordinates */
 	this.x = 0;
 	this.y = 0;
-	/** текущий угол поворота */
+	/** angle */
 	this.rotationAngle = 0;
-	/** размеры ограничивающего прямоугольника*/
+	/** outer box size*/
 	this.boxWidth = 0;
 	this.boxHeight = 0;
-	/** текущая скорость, угол направления движения и проекции скорости на оси координат */
+	/** speed params*/
 	this.speed = 0;
 	this.speedAngle = 0;
 	this.horizontalSpeedProj = 0;
 	this.verticalSpeedProj = 0;
-	/** ускорение - скалярная величина и угол, проекции скал. ускорения на оси координат */
-	this.velocity = 0;
-	this.velocityAngle = 0;
-	this.horizontalVelocityProj = 0;
-	this.verticalVelocityProj = 0;
-	this.id = null;
+	/** acceleration params */
+	this.acceleration = 0;
+	this.accelerationAngle = 0;
+	this.horizontalAccelerationProj = 0;
+	this.verticalAccelerationProj = 0;
+
+	Helper.applySettings(this, settings);
 };
-/** удаление элемента с холста
+/** remove object from canvas
  * @param ctx - контекст canvas 2d
  */
 Element.prototype.clear = function (ctx) {};
 
-/** рисование элемента на холсте
+/** draw object on canvas
  * @param ctx - контекст canvas 2d
  */
 Element.prototype.draw = function (ctx) {};
 
-/** пересчет свойств объекта - положения, угла поворота, ускорения, етс
+/** recalculate object params
  */
 Element.prototype.calculateState = function () {};
 
 
-/** обработчик события onmousemove
+/** onmousemove
  * @param e - объект event
  */
-Element.prototype.onmousemove = function (e) {};
+Element.prototype.mousemove = function (e) {};
 
-/** обработчик события click
+/** onmousedown
+ * @param e - объект event
+ */
+Element.prototype.mousedown = function (e) {};
+
+/** click
  * @param e - объект event
  */
 Element.prototype.click = function (e) {};
